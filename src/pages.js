@@ -1,13 +1,6 @@
 const { subjects, weekday, getSubject, convertHToM } = require("./utils/format")
 const Database = require('./database/db')
 
-var nomes = [
-    {name: "numsei",
-    idade: 18},
-    {name: "numsei2",
-    idade: 182}
-]
-
 function index(req, res) {
     return res.render("index.html")
 }
@@ -16,7 +9,7 @@ async function study(req,res) {
     const filters = req.query
     
     if(!filters.subject || !filters.weekday || !filters.time) {
-        return res.render("study.html", {filters, subjects, weekday, pao: nomes})
+        return res.render("study.html", {filters, subjects, weekday})
     }
 
     const mins = convertHToM(filters.time)
